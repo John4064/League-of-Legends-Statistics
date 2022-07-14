@@ -1,5 +1,6 @@
 # league-app
 
+Using https://developer.riotgames.com/docs/portal
 ## Project setup
 ```
 npm install
