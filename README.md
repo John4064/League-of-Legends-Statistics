@@ -1,4 +1,4 @@
-# league-app
+# League-of-Legends-Statistics
 
 Using https://developer.riotgames.com/docs/portal
 ## Project setup
