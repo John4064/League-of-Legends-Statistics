@@ -7,13 +7,12 @@ import (
 )
 
 func main() {
-	fmt.Println(apiKey)
-	var url = "https://aerodatabox.p.rapidapi.com/flights/%7BsearchBy%7D/KL1395/2020-06-10"
+
+	url := fmt.Sprintf("https://na1.api.riotgames.com/lol/platform/v3/champion-rotations?api_key=%s", apiKey)
 
 	req, _ := http.NewRequest("GET", url, nil)
 
-	req.Header.Add("X-RapidAPI-Key", "SIGN-UP-FOR-KEY")
-	req.Header.Add("X-RapidAPI-Host", "aerodatabox.p.rapidapi.com")
+	req.Header.Add("KeyValue", apiKey)
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -22,4 +21,5 @@ func main() {
 
 	fmt.Println(res)
 	fmt.Println(string(body))
+
 }
