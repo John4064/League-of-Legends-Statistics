@@ -32,9 +32,16 @@ type metadataDTO struct {
 }
 
 type participantDTO struct {
+	assists           int
+	baronKills        int
+	bountyLevel       int
+	champExperience   int
+	champLevel        int
+	championId        int
+	championName      string
+	championTransform int
 }
-type teamDTO struct {
-}
+
 type perksDTO struct {
 	statPerks perkStatsDTO
 	styles    []perkStyleDTO
@@ -57,4 +64,29 @@ type perkStyleSelectionDTO struct {
 	var1 int
 	var2 int
 	var3 int
+}
+
+type teamDTO struct {
+	bans       []banDTO
+	objectives objectivesDTO
+	teamId     int
+	win        bool
+}
+
+type banDTO struct {
+	championId int
+	pickTurn   int
+}
+
+type objectivesDTO struct {
+	baron      objectiveDTO
+	champion   objectiveDTO
+	dragon     objectiveDTO
+	inhibitor  objectiveDTO
+	riftHerald objectiveDTO
+	tower      objectiveDTO
+}
+type objectiveDTO struct {
+	first bool
+	kills int
 }
