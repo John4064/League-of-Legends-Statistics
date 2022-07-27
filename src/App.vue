@@ -1,5 +1,9 @@
 <template>
-  <MainPage msg="LoL Stats"/>
+  <MainPage/>
+
+
+
+
 </template>
 
 <script>

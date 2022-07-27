@@ -1,6 +1,8 @@
 <template>
-  <h1>{{ msg }}</h1>
-  <p>Test123</p>
+  <div class="topnav">
+    <a class="active" href="#home">Home</a>
+    <input type="text" placeholder="Search..">
+  </div>
 </template>
 
 <script>
