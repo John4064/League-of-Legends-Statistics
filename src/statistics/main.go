@@ -6,6 +6,11 @@ import (
 	"net/http"
 )
 
+func processUserName(name string) {
+	fmt.Println(name);
+	return;
+}
+
 func main() {
 	//Order of api call, first get puid frm name, then match history and then display said matches
 
