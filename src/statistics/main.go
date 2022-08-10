@@ -1,17 +1,40 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"net/http"
 )
 
-func processUserName(name string) {
-	fmt.Println(name);
-	return;
+func processUserName(name string) summonerDTO {
+
+	///lol/summoner/v4/summoners/by-name/
+	url := fmt.Sprintf("https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/%s/?api_key=%s", name, apiKey)
+
+	req, _ := http.NewRequest("GET", url, nil)
+
+	req.Header.Add("KeyValue", apiKey)
+
+	res, _ := http.DefaultClient.Do(req)
+
+	defer res.Body.Close()
+	body, _ := ioutil.ReadAll(res.Body)
+
+	fmt.Println(res)
+	fmt.Println(string(body))
+	var test summonerDTO
+	json.Unmarshal(body, &test)
+	fmt.Println(test.name)
+	//Todo is map to a summonerDTO
+	return test
 }
 
 func main() {
+	test := processUserName("CarnageOutlaw")
+	fmt.Println(test.name)
+	fmt.Println("Done")
+	//user := summonerDS.summonerDTO();
 	//Order of api call, first get puid frm name, then match history and then display said matches
 
 	//{
@@ -45,19 +68,5 @@ func main() {
 	//	"NA1_4377659194",
 	//	"NA1_4377613399",
 	//	"NA1_4377602088"]
-
-	url := fmt.Sprintf("https://na1.api.riotgames.com/lol/platform/v3/champion-rotations?api_key=%s", apiKey)
-
-	req, _ := http.NewRequest("GET", url, nil)
-
-	req.Header.Add("KeyValue", apiKey)
-
-	res, _ := http.DefaultClient.Do(req)
-
-	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body)
-
-	fmt.Println(res)
-	fmt.Println(string(body))
 
 }
