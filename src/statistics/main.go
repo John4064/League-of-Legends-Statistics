@@ -21,18 +21,23 @@ func processUserName(name string) summonerDTO {
 	defer res.Body.Close()
 	body, _ := ioutil.ReadAll(res.Body)
 
-	fmt.Println(res)
 	fmt.Println(string(body))
 	var test summonerDTO
-	json.Unmarshal(body, &test)
+	fmt.Println(3)
 	fmt.Println(test.name)
+	err := json.Unmarshal(body, &test)
+	if err != nil {
+		fmt.Println("test")
+	} else {
+		fmt.Println(test)
+	}
 	//Todo is map to a summonerDTO
 	return test
 }
 
 func main() {
-	test := processUserName("CarnageOutlaw")
-	fmt.Println(test.name)
+	temp := processUserName("CarnageOutlaw")
+	fmt.Println(temp.name)
 	fmt.Println("Done")
 	//user := summonerDS.summonerDTO();
 	//Order of api call, first get puid frm name, then match history and then display said matches
